@@ -25,6 +25,9 @@ class Character(
         get() = _heal
 
     infix fun dealDamage(enemy: Character) {
+        if (enemy === this) {
+            return
+        }
         enemy.health.subtract(Health(attack.value))
     }
 
