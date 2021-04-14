@@ -11,4 +11,13 @@ class CharacterTest : FunSpec({
         newCharacter.level.value shouldBe Level().value
         newCharacter.alive shouldBe true
     }
+
+    test("character can deal damage to character. Damage is subtracted from healt") {
+        val attacker = Character()
+        val enemy = Character()
+
+        attacker.dealDamage(enemy)
+
+        enemy.health.value shouldBe Health().subtract(Health(attacker.attack.value)).value
+    }
 })
