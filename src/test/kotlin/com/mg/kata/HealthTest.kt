@@ -9,7 +9,11 @@ class HealthTest : FunSpec({
         Health().value shouldBe 1000
     }
 
-    test("Subtract healt") {
-        Health(100).subtract(Health(20)).value shouldBe Health(80).value
+    test("Subtract health") {
+        Health(100).subtract(Health(20)) shouldBeSameAs Health(80)
+    }
+
+    test("Add health") {
+        Health(100).add(Health(100)) shouldBeSameAs Health(200)
     }
 })

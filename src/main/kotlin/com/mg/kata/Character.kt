@@ -3,7 +3,8 @@ package com.mg.kata
 class Character(
     private val _health: Health = Health(),
     private val _level: Level = Level(),
-    private val _attack: Attack = Attack()
+    private val _attack: Attack = Attack(),
+    private val _heal: Heal = Heal()
 ) {
 
     val health
@@ -18,8 +19,14 @@ class Character(
     val attack
         get() = _attack
 
+    val heal
+        get() = _heal
+
     fun dealDamage(enemy: Character) {
         enemy.health.subtract(Health(attack.value))
+    }
+
+    fun heal(injured: Character) {
     }
 }
 
@@ -35,6 +42,11 @@ class Health(
         _value -= health.value
         return this
     }
+
+    fun add(health: Health): Health {
+        _value += health.value
+        return this
+    }
 }
 
 class Level {
@@ -45,6 +57,13 @@ class Level {
 }
 
 class Attack(
+    private var _value: Int = 100
+) {
+    val value
+        get() = _value
+}
+
+class Heal(
     private var _value: Int = 100
 ) {
     val value
