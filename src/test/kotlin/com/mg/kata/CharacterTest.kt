@@ -17,7 +17,7 @@ class CharacterTest : FunSpec({
         val attacker = Character()
         val enemy = Character()
 
-        attacker.dealDamage(enemy)
+        attacker dealDamage enemy
 
         enemy.health shouldBeSameAs Health().subtract(Health(attacker.attack.value))
     }
@@ -26,7 +26,7 @@ class CharacterTest : FunSpec({
         val attacker = Character(_attack = Attack(1000))
         val enemy = Character(Health(100))
 
-        attacker.dealDamage(enemy)
+        attacker dealDamage enemy
 
         enemy.alive shouldBe false
     }
@@ -35,7 +35,7 @@ class CharacterTest : FunSpec({
         val attacker = Character(_attack = Attack(100))
         val enemy = Character(Health(100))
 
-        attacker.dealDamage(enemy)
+        attacker dealDamage enemy
 
         enemy.alive shouldBe false
     }
@@ -44,9 +44,19 @@ class CharacterTest : FunSpec({
         val healer = Character(_heal = Heal(100))
         val injured = Character(Health(100))
 
-        healer.heal(injured)
+        healer heal injured
 
         injured.health shouldBeSameAs Health(200)
+    }
+
+    test("Death character can not be healed") {
+        val healer = Character()
+        val death = Character(Health(0))
+
+        healer heal death
+
+        death.health shouldBeSameAs Health(0)
+        death.alive shouldBe false
     }
 })
 

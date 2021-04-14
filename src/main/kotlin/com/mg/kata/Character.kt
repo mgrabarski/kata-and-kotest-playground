@@ -22,12 +22,14 @@ class Character(
     val heal
         get() = _heal
 
-    fun dealDamage(enemy: Character) {
+    infix fun dealDamage(enemy: Character) {
         enemy.health.subtract(Health(attack.value))
     }
 
-    fun heal(injured: Character) {
-        injured.health.add(Health(heal.value))
+    infix fun heal(injured: Character) {
+        if (injured.alive) {
+            injured.health.add(Health(heal.value))
+        }
     }
 }
 
