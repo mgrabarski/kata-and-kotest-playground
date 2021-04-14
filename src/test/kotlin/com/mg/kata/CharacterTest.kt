@@ -50,6 +50,6 @@ class CharacterTest : FunSpec({
     }
 })
 
-private infix fun Health.shouldBeSameAs(health: Health) {
+infix fun Health.shouldBeSameAs(health: Health) {
     assertEquals(health.value, this.value)
 }

@@ -27,6 +27,7 @@ class Character(
     }
 
     fun heal(injured: Character) {
+        injured.health.add(Health(heal.value))
     }
 }
 
