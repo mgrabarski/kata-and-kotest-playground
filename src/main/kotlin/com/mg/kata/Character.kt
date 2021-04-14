@@ -9,13 +9,18 @@ class Character {
         get() = health.isAlive()
 }
 
-class Health {
-
-    private var _value = 1000
+class Health(
+    private var _value: Int = 1000
+) {
     val value
         get() = _value
 
     fun isAlive() = _value > 0
+
+    fun subtract(health: Health): Health {
+        _value -= health.value
+        return this
+    }
 }
 
 class Level {
