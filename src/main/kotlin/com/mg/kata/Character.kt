@@ -2,8 +2,8 @@ package com.mg.kata
 
 class Character {
 
-    var health = Health()
-    var level = Level()
+    val health = Health()
+    val level = Level()
 
     val alive: Boolean
         get() = health.isAlive()
