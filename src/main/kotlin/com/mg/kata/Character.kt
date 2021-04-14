@@ -1,14 +1,22 @@
 package com.mg.kata
 
-class Character {
+class Character(
+    private val _health: Health = Health(),
+    private val _level: Level = Level(),
+    private val _attack: Attack = Attack()
+) {
 
-    val health = Health()
-    val level = Level()
+    val health
+        get() = _health
 
     val alive: Boolean
         get() = health.isAlive()
 
-    val attack = Attack()
+    val level
+        get() = _level
+
+    val attack
+        get() = _attack
 
     fun dealDamage(enemy: Character) {
         enemy.health.subtract(Health(attack.value))
