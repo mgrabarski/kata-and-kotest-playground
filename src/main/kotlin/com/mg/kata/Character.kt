@@ -1,5 +1,7 @@
 package com.mg.kata
 
+const val MAX_HEALTH = 1000
+
 class Character(
     private val _health: Health = Health(),
     private val _level: Level = Level(),
@@ -34,7 +36,7 @@ class Character(
 }
 
 class Health(
-    private var _value: Int = 1000
+    private var _value: Int = MAX_HEALTH
 ) {
     val value
         get() = _value
@@ -48,6 +50,9 @@ class Health(
 
     fun add(health: Health): Health {
         _value += health.value
+        if (_value > MAX_HEALTH) {
+            _value = MAX_HEALTH
+        }
         return this
     }
 }

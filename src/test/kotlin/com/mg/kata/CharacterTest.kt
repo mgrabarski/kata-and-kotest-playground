@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 
 class CharacterTest : FunSpec({
 
-    test("character has health 1000, level 1 and is alive") {
+    test("character has health MAX_HEALTH, level 1 and is alive") {
         val newCharacter = Character()
         newCharacter.health shouldBeSameAs Health()
         newCharacter.level.value shouldBe Level().value

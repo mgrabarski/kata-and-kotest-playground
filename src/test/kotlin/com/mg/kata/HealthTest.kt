@@ -16,4 +16,8 @@ class HealthTest : FunSpec({
     test("Add health") {
         Health(100).add(Health(100)) shouldBeSameAs Health(200)
     }
+
+    test("Health can not be bigger then MAX_HEALTH") {
+        Health(MAX_HEALTH).add(Health(100)) shouldBeSameAs Health(MAX_HEALTH)
+    }
 })
