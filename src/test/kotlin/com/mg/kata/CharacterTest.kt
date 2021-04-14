@@ -58,6 +58,14 @@ class CharacterTest : FunSpec({
         death.health shouldBeSameAs Health(0)
         death.alive shouldBe false
     }
+
+    test("Character can not deal damage to itself") {
+        val character = Character()
+
+        character dealDamage character
+
+        character.health shouldBeSameAs Health()
+    }
 })
 
 infix fun Health.shouldBeSameAs(health: Health) {
