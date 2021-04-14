@@ -7,6 +7,12 @@ class Character {
 
     val alive: Boolean
         get() = health.isAlive()
+
+    val attack = Attack()
+
+    fun dealDamage(enemy: Character) {
+        enemy.health.subtract(Health(attack.value))
+    }
 }
 
 class Health(
@@ -26,6 +32,13 @@ class Health(
 class Level {
 
     private var _value = 1
+    val value
+        get() = _value
+}
+
+class Attack(
+    private var _value: Int = 100
+) {
     val value
         get() = _value
 }
