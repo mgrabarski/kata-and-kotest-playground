@@ -30,6 +30,15 @@ class CharacterTest : FunSpec({
 
         enemy.alive shouldBe false
     }
+
+    test("when health is zero then character is death") {
+        val attacker = Character(_attack = Attack(100))
+        val enemy = Character(Health(100))
+
+        attacker.dealDamage(enemy)
+
+        enemy.alive shouldBe false
+    }
 })
 
 private infix fun Health.shouldBeSameAs(health: Health) {
