@@ -5,8 +5,8 @@ class Character {
     var health = Health()
     var level = Level()
 
-    val live: Boolean
-        get() = if (health.value > 0) true else false
+    val alive: Boolean
+        get() = health.isAlive()
 }
 
 class Health {
@@ -14,6 +14,8 @@ class Health {
     private var _value = 1000
     val value
         get() = _value
+
+    fun isAlive() = _value > 0
 }
 
 class Level {

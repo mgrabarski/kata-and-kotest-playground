@@ -9,6 +9,6 @@ class CharacterTest : FunSpec({
         val newCharacter = Character()
         newCharacter.health.value shouldBe Health().value
         newCharacter.level.value shouldBe Level().value
-        newCharacter.live shouldBe true
+        newCharacter.alive shouldBe true
     }
 })
