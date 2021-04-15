@@ -77,7 +77,7 @@ class CharacterTest : FunSpec({
 
     test("Deal damage: if the target is 5 levels above the attacker - damage is reduce by 50%") {
         val attacker = Character(_level = Level(1))
-        val target = Character(_level = Level(5))
+        val target = Character(_level = Level(6))
 
         attacker dealDamage target
 
@@ -94,7 +94,7 @@ class CharacterTest : FunSpec({
     }
 
     test("Deal damage: if the target is 5 levels velow the attacked - damage is increased by 50%") {
-        val attacker = Character(_level = Level(5))
+        val attacker = Character(_level = Level(6))
         val target = Character(_level = Level(1))
 
         attacker dealDamage target
@@ -103,8 +103,8 @@ class CharacterTest : FunSpec({
     }
 
     test("Deal damage: if the target is more then 5 levels velow the attacked - damage is increased by 50%") {
-        val attacker = Character(_level = Level(1))
-        val target = Character(_level = Level(5))
+        val attacker = Character(_level = Level(10))
+        val target = Character(_level = Level(1))
 
         attacker dealDamage target
 

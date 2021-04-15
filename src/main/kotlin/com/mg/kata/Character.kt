@@ -28,7 +28,14 @@ class Character(
         if (enemy === this) {
             return
         }
-        enemy.health.subtract(Health(attack.value))
+        val attackExtraDamage: Int = if (enemy.level.value >= this.level.value + 5) {
+            -(attack.value * 0.5).toInt()
+        } else if (enemy.level.value <= this.level.value - 5) {
+            (attack.value * 0.5).toInt()
+        } else {
+            0
+        }
+        enemy.health.subtract(Health(attack.value + attackExtraDamage))
     }
 
     infix fun heal(injured: Character) {
