@@ -66,6 +66,23 @@ class CharacterTest : FunSpec({
 
         character.health shouldBeSameAs Health()
     }
+
+    test("Character heal only itself") {
+        val character = Character(Health(100))
+
+        character heal character
+
+        character.health shouldBeSameAs Health(100 + character.heal.value)
+    }
+
+    test("Heal other character not changing heal of this character") {
+        val healer = Character()
+        val injured = Character(Health(100))
+
+        healer heal injured
+
+        injured.health shouldBeSameAs Health(100)
+    }
 })
 
 infix fun Health.shouldBeSameAs(health: Health) {
