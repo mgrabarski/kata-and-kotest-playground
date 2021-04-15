@@ -33,7 +33,9 @@ class Character(
 
     infix fun heal(injured: Character) {
         if (injured.alive) {
-            injured.health.add(Health(heal.value))
+            if (injured === this) {
+                injured.health.add(Health(heal.value))
+            }
         }
     }
 }
