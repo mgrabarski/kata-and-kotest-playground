@@ -62,9 +62,7 @@ class Health(
     }
 }
 
-class Level {
-
-    private var _value = 1
+class Level(private val _value: Int = 1) {
     val value
         get() = _value
 }
