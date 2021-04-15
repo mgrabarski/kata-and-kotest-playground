@@ -76,19 +76,39 @@ class CharacterTest : FunSpec({
     }
 
     test("Deal damage: if the target is 5 levels above the attacker - damage is reduce by 50%") {
+        val attacker = Character(_level = Level(1))
+        val target = Character(_level = Level(5))
 
+        attacker dealDamage target
+
+        target.health shouldBeSameAs Health().subtract(Health((attacker.attack.value * 0.5).toInt()))
     }
 
     test("Deal damage: if the target is more then 5 levels above the attacker - damage is reduce by 50%") {
+        val attacker = Character(_level = Level(1))
+        val target = Character(_level = Level(10))
 
+        attacker dealDamage target
+
+        target.health shouldBeSameAs Health().subtract(Health((attacker.attack.value * 0.5).toInt()))
     }
 
     test("Deal damage: if the target is 5 levels velow the attacked - damage is increased by 50%") {
+        val attacker = Character(_level = Level(5))
+        val target = Character(_level = Level(1))
 
+        attacker dealDamage target
+
+        target.health shouldBeSameAs Health().subtract(Health(attacker.attack.value + (attacker.attack.value * 0.5).toInt()))
     }
 
     test("Deal damage: if the target is more then 5 levels velow the attacked - damage is increased by 50%") {
+        val attacker = Character(_level = Level(1))
+        val target = Character(_level = Level(5))
 
+        attacker dealDamage target
+
+        target.health shouldBeSameAs Health().subtract(Health(attacker.attack.value + (attacker.attack.value * 0.5).toInt()))
     }
 })
 
