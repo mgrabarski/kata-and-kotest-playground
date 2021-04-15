@@ -40,15 +40,6 @@ class CharacterTest : FunSpec({
         enemy.alive shouldBe false
     }
 
-    test("character can heal other character") {
-        val healer = Character(_heal = Heal(100))
-        val injured = Character(Health(100))
-
-        healer heal injured
-
-        injured.health shouldBeSameAs Health(200)
-    }
-
     test("Death character can not be healed") {
         val healer = Character()
         val death = Character(Health(0))
