@@ -76,39 +76,43 @@ class CharacterTest : FunSpec({
     }
 
     test("Deal damage: if the target is 5 levels above the attacker - damage is reduce by 50%") {
-        val attacker = Character(_level = Level(1))
-        val target = Character(_level = Level(6))
+        val attack = Attack(100)
+        val attacker = Character(_level = Level(1), _attack = attack)
+        val target = Character(_level = Level(6), _attack = attack)
 
         attacker dealDamage target
 
-        target.health shouldBeSameAs Health().subtract(Health((attacker.attack.value * 0.5).toInt()))
+        target.health shouldBeSameAs Health(950)
     }
 
     test("Deal damage: if the target is more then 5 levels above the attacker - damage is reduce by 50%") {
-        val attacker = Character(_level = Level(1))
-        val target = Character(_level = Level(10))
+        val attack = Attack(100)
+        val attacker = Character(_level = Level(1), _attack = attack)
+        val target = Character(_level = Level(10), _attack = attack)
 
         attacker dealDamage target
 
-        target.health shouldBeSameAs Health().subtract(Health((attacker.attack.value * 0.5).toInt()))
+        target.health shouldBeSameAs Health(950)
     }
 
     test("Deal damage: if the target is 5 levels velow the attacked - damage is increased by 50%") {
-        val attacker = Character(_level = Level(6))
-        val target = Character(_level = Level(1))
+        val attack = Attack(100)
+        val attacker = Character(_level = Level(6), _attack = attack)
+        val target = Character(_level = Level(1), _attack = attack)
 
         attacker dealDamage target
 
-        target.health shouldBeSameAs Health().subtract(Health(attacker.attack.value + (attacker.attack.value * 0.5).toInt()))
+        target.health shouldBeSameAs Health(850)
     }
 
     test("Deal damage: if the target is more then 5 levels velow the attacked - damage is increased by 50%") {
-        val attacker = Character(_level = Level(10))
-        val target = Character(_level = Level(1))
+        val attack = Attack(100)
+        val attacker = Character(_level = Level(10), _attack = attack)
+        val target = Character(_level = Level(1), _attack = attack)
 
         attacker dealDamage target
 
-        target.health shouldBeSameAs Health().subtract(Health(attacker.attack.value + (attacker.attack.value * 0.5).toInt()))
+        target.health shouldBeSameAs Health(850)
     }
 })
 
