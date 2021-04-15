@@ -74,6 +74,22 @@ class CharacterTest : FunSpec({
 
         injured.health shouldBeSameAs Health(100)
     }
+
+    test("Deal damage: if the target is 5 levels above the attacker - damage is reduce by 50%") {
+
+    }
+
+    test("Deal damage: if the target is more then 5 levels above the attacker - damage is reduce by 50%") {
+
+    }
+
+    test("Deal damage: if the target is 5 levels velow the attacked - damage is increased by 50%") {
+
+    }
+
+    test("Deal damage: if the target is more then 5 levels velow the attacked - damage is increased by 50%") {
+
+    }
 })
 
 infix fun Health.shouldBeSameAs(health: Health) {
