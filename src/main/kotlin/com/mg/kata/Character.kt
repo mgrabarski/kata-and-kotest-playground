@@ -28,14 +28,16 @@ class Character(
         if (enemy === this) {
             return
         }
-        val attackExtraDamage: Int = if (enemy.level.value >= this.level.value + 5) {
-            -(attack.value * 0.5).toInt()
-        } else if (enemy.level.value <= this.level.value - 5) {
-            (attack.value * 0.5).toInt()
-        } else {
-            0
-        }
+        val attackExtraDamage: Int = calculateLevelDamageBouns(enemy)
         enemy.health.subtract(Health(attack.value + attackExtraDamage))
+    }
+
+    private fun calculateLevelDamageBouns(enemy: Character) = if (enemy.level.value >= this.level.value + 5) {
+        -(attack.value * 0.5).toInt()
+    } else if (enemy.level.value <= this.level.value - 5) {
+        (attack.value * 0.5).toInt()
+    } else {
+        0
     }
 
     infix fun heal(injured: Character) {
