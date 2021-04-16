@@ -31,7 +31,7 @@ class Character(
         get() = _position
 
     infix fun dealDamage(enemy: Character) {
-        if (enemy === this) {
+        if (enemy === this || !position.isInRange(attack.range, enemy.position)) {
             return
         }
         val attackExtraDamage: Int = calculateLevelDamageBouns(enemy)
