@@ -139,6 +139,24 @@ class CharacterTest : FunSpec({
 
         target.health shouldBeSameAs Health(900)
     }
+
+    test("Target character is out of the melee attack range. Damage should not be deal") {
+        val attacker = Character(_position = Position(0, 0), _attack = Attack(Melee, 100))
+        val target = Character(_position = Position(10, 10), _attack = Attack(Melee, 100))
+
+        attacker dealDamage target
+
+        target.health shouldBeSameAs Health()
+    }
+
+    test("Target character is out of the rangea attack range. Damage should not be deal") {
+        val attacker = Character(_position = Position(0, 0), _attack = Attack(Rangea, 100))
+        val target = Character(_position = Position(25, 25), _attack = Attack(Melee, 100))
+
+        attacker dealDamage target
+
+        target.health shouldBeSameAs Health()
+    }
 })
 
 infix fun Health.shouldBeSameAs(health: Health) {
