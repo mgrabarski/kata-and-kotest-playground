@@ -85,7 +85,7 @@ class Level(private val _value: Int = 1) {
 
 enum class AttackType(val range: Int) {
     Melee(2),
-    Rangea(10)
+    Rangea(20)
 }
 
 class Attack(
