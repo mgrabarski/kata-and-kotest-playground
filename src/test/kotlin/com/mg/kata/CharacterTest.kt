@@ -1,7 +1,7 @@
 package com.mg.kata
 
 import com.mg.kata.AttackType.Melee
-import com.mg.kata.AttackType.Range
+import com.mg.kata.AttackType.Rangea
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import kotlin.test.assertEquals
@@ -119,7 +119,7 @@ class CharacterTest : FunSpec({
 
     test("Character has max range attack") {
         Character(_attack = Attack(Melee)).attack.range shouldBe AttackType.Melee.range
-        Character(_attack = Attack(Range)).attack.range shouldBe AttackType.Range.range
+        Character(_attack = Attack(Rangea)).attack.range shouldBe AttackType.Rangea.range
     }
 })
 
