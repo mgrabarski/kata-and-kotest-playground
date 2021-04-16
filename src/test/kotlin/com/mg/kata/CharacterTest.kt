@@ -114,6 +114,11 @@ class CharacterTest : FunSpec({
 
         target.health shouldBeSameAs Health(850)
     }
+
+    test("Character has max range attack") {
+        Character(AttackType.Melee).attack.range shouldBe 2
+        Character(AttackType.Range).attack.range shouldBe 10
+    }
 })
 
 infix fun Health.shouldBeSameAs(health: Health) {
