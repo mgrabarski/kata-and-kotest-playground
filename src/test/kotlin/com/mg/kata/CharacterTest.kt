@@ -1,5 +1,7 @@
 package com.mg.kata
 
+import com.mg.kata.AttackType.Melee
+import com.mg.kata.AttackType.Range
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import kotlin.test.assertEquals
@@ -23,7 +25,7 @@ class CharacterTest : FunSpec({
     }
 
     test("given damage bigger then healt then character should be death") {
-        val attacker = Character(_attack = Attack(1000))
+        val attacker = Character(_attack = Attack(Melee, 1000))
         val enemy = Character(Health(100))
 
         attacker dealDamage enemy
@@ -32,7 +34,7 @@ class CharacterTest : FunSpec({
     }
 
     test("when health is zero then character is death") {
-        val attacker = Character(_attack = Attack(100))
+        val attacker = Character(_attack = Attack(Melee, 100))
         val enemy = Character(Health(100))
 
         attacker dealDamage enemy
@@ -76,7 +78,7 @@ class CharacterTest : FunSpec({
     }
 
     test("Deal damage: if the target is 5 levels above the attacker - damage is reduce by 50%") {
-        val attack = Attack(100)
+        val attack = Attack(Melee, 100)
         val attacker = Character(_level = Level(1), _attack = attack)
         val target = Character(_level = Level(6), _attack = attack)
 
@@ -86,7 +88,7 @@ class CharacterTest : FunSpec({
     }
 
     test("Deal damage: if the target is more then 5 levels above the attacker - damage is reduce by 50%") {
-        val attack = Attack(100)
+        val attack = Attack(Melee, 100)
         val attacker = Character(_level = Level(1), _attack = attack)
         val target = Character(_level = Level(10), _attack = attack)
 
@@ -96,7 +98,7 @@ class CharacterTest : FunSpec({
     }
 
     test("Deal damage: if the target is 5 levels velow the attacked - damage is increased by 50%") {
-        val attack = Attack(100)
+        val attack = Attack(Melee, 100)
         val attacker = Character(_level = Level(6), _attack = attack)
         val target = Character(_level = Level(1), _attack = attack)
 
@@ -106,7 +108,7 @@ class CharacterTest : FunSpec({
     }
 
     test("Deal damage: if the target is more then 5 levels velow the attacked - damage is increased by 50%") {
-        val attack = Attack(100)
+        val attack = Attack(Melee, 100)
         val attacker = Character(_level = Level(10), _attack = attack)
         val target = Character(_level = Level(1), _attack = attack)
 
@@ -116,8 +118,8 @@ class CharacterTest : FunSpec({
     }
 
     test("Character has max range attack") {
-        Character(AttackType.Melee).attack.range shouldBe 2
-        Character(AttackType.Range).attack.range shouldBe 10
+        Character(_attack = Attack(Melee)).attack.range shouldBe AttackType.Melee.range
+        Character(_attack = Attack(Range)).attack.range shouldBe AttackType.Range.range
     }
 })
 

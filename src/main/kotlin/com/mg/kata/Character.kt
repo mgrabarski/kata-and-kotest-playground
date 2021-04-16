@@ -1,12 +1,15 @@
 package com.mg.kata
 
+import com.mg.kata.AttackType.Melee
+
 const val MAX_HEALTH = 1000
 
 class Character(
     private val _health: Health = Health(),
     private val _level: Level = Level(),
-    private val _attack: Attack = Attack(),
-    private val _heal: Heal = Heal()
+    private val _attack: Attack = Attack(Melee),
+    private val _heal: Heal = Heal(),
+    private val _position: Position = Position()
 ) {
 
     val health
@@ -23,6 +26,9 @@ class Character(
 
     val heal
         get() = _heal
+
+    val position
+        get() = _position
 
     infix fun dealDamage(enemy: Character) {
         if (enemy === this) {
@@ -76,11 +82,20 @@ class Level(private val _value: Int = 1) {
         get() = _value
 }
 
+
+enum class AttackType(val range: Int) {
+    Melee(2),
+    Range(10)
+}
+
 class Attack(
+    val type: AttackType,
     private var _value: Int = 100
 ) {
     val value
         get() = _value
+
+    val range = type.range
 }
 
 class Heal(
@@ -88,4 +103,15 @@ class Heal(
 ) {
     val value
         get() = _value
+}
+
+class Position(
+    private var _x: Int = 0,
+    private var _y: Int = 0
+) {
+    val x
+        get() = _x
+
+    val y
+        get() = _y
 }
