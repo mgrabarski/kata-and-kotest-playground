@@ -82,7 +82,6 @@ class Level(private val _value: Int = 1) {
         get() = _value
 }
 
-
 enum class AttackType(val range: Int) {
     Melee(2),
     Rangea(20)
@@ -105,7 +104,7 @@ class Heal(
         get() = _value
 }
 
-class Position(
+data class Position(
     private var _x: Int = 0,
     private var _y: Int = 0
 ) {
@@ -114,4 +113,10 @@ class Position(
 
     val y
         get() = _y
+
+    fun isInRange(range: Int, position: Position): Boolean {
+        val xRange = x - range..x + range
+        val yRange = y - range..y + range
+        return xRange.contains(position.x) && yRange.contains(position.y)
+    }
 }
