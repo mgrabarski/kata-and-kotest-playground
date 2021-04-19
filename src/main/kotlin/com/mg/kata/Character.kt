@@ -59,7 +59,7 @@ class Character(
 
     infix fun heal(injured: Character) {
         if (injured.alive) {
-            if (injured === this) {
+            if (injured === this || isEnemyFromAnySameFaction(injured)) {
                 injured.health.add(Health(heal.value))
             }
         }
