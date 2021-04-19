@@ -157,6 +157,14 @@ class CharacterTest : FunSpec({
 
         target.health shouldBeSameAs Health()
     }
+
+    test("Newly created character belong to no faction") {
+        val chatacter = Character()
+
+        val characterFactions = chatacter.getFactions()
+
+        characterFactions.shouldBeEmpty()
+    }
 })
 
 infix fun Health.shouldBeSameAs(health: Health) {
