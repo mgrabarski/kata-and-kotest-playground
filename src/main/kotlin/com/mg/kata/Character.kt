@@ -41,8 +41,8 @@ class Character(
     }
 
     private fun isEnemyFromAnySameFaction(enemy: Character): Boolean {
-        factions.forEach {
-            if (it.getAllies().contains(enemy)) {
+        factions.forEach { faction ->
+            if (faction.getAllies().contains(enemy)) {
                 return true
             }
         }
