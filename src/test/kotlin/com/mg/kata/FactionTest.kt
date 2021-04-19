@@ -1,7 +1,7 @@
 package com.mg.kata
 
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.shouldBe
+import io.kotest.matchers.collections.shouldContain
 
 class FactionTest : FunSpec({
 
@@ -11,6 +11,6 @@ class FactionTest : FunSpec({
 
         faction.join(character)
 
-        faction.getMembers().shouldContains(character)
+        faction.getMembers().shouldContain(character)
     }
 })
