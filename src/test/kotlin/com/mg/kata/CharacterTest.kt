@@ -166,6 +166,18 @@ class CharacterTest : FunSpec({
 
         characterFactions.shouldBeEmpty()
     }
+
+    test("Characters can not deal damage to character from the same faction") {
+        val attacker = Character()
+        val target = Character()
+        val faction = Faction()
+        faction.join(attacker)
+        faction.join(target)
+
+        attacker dealDamage target
+
+        target.health shouldBeSameAs Health()
+    }
 })
 
 infix fun Health.shouldBeSameAs(health: Health) {
