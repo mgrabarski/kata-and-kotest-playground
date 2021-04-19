@@ -30,7 +30,7 @@ class Character(
     val position
         get() = _position
 
-    private val factions = mutableListOf<Faction>()
+    internal val factions = mutableListOf<Faction>()
 
     infix fun dealDamage(enemy: Character) {
         if (enemy === this || !position.isInRange(attack.range, enemy.position)) {
