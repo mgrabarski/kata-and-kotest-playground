@@ -2,6 +2,7 @@ package com.mg.kata
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.collections.shouldNotContain
 
 class FactionTest : FunSpec({
 
@@ -21,5 +22,15 @@ class FactionTest : FunSpec({
         faction.join(character)
 
         character.getFactions().shouldContain(faction)
+    }
+
+    test("Character can leave the faction") {
+        val character = Character()
+        val faction = Faction()
+        faction.join(character)
+
+        faction.leave(character)
+
+        faction.getMembers().shouldNotContain(character)
     }
 })
