@@ -13,7 +13,7 @@ class FactionTest : FunSpec({
 
         faction.join(character)
 
-        faction.getMembers().shouldContain(character)
+        faction.getMembers() shouldContain character
     }
 
     test("Character should contain faction to which it belongs") {
@@ -22,7 +22,7 @@ class FactionTest : FunSpec({
 
         faction.join(character)
 
-        character.getFactions().shouldContain(faction)
+        character.getFactions() shouldContain faction
     }
 
     test("Character can leave the faction") {
@@ -32,7 +32,7 @@ class FactionTest : FunSpec({
 
         faction.leave(character)
 
-        faction.getMembers().shouldNotContain(character)
+        faction.getMembers() shouldNotContain character
     }
 
     test("Character after leave the faction should not belong to them") {
@@ -42,7 +42,7 @@ class FactionTest : FunSpec({
 
         faction.leave(character)
 
-        character.getFactions().shouldNotContain(faction)
+        character.getFactions() shouldNotContain faction
     }
 
     test("Character belong to more then one faction") {
