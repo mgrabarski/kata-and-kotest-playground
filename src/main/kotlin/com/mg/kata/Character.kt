@@ -33,11 +33,20 @@ class Character(
     internal val factions = mutableListOf<Faction>()
 
     infix fun dealDamage(enemy: Character) {
-        if (enemy === this || !position.isInRange(attack.range, enemy.position)) {
+        if (enemy === this || !position.isInRange(attack.range, enemy.position) || isEnemyFromAnySameFaction(enemy)) {
             return
         }
         val attackExtraDamage: Int = calculateLevelDamageBouns(enemy)
         enemy.health.subtract(Health(attack.value + attackExtraDamage))
+    }
+
+    private fun isEnemyFromAnySameFaction(enemy: Character): Boolean {
+        factions.forEach {
+            if (it.getAllies().contains(enemy)) {
+                return true
+            }
+        }
+        return false
     }
 
     private fun calculateLevelDamageBouns(enemy: Character) = if (enemy.level.value >= this.level.value + 5) {
