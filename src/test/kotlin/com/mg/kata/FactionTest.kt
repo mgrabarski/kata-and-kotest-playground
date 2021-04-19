@@ -33,4 +33,14 @@ class FactionTest : FunSpec({
 
         faction.getMembers().shouldNotContain(character)
     }
+
+    test("Character after leave the faction should not belong to them") {
+        val character = Character()
+        val faction = Faction()
+        faction.join(character)
+
+        faction.leave(character)
+
+        character.getFactions().shouldNotContain(faction)
+    }
 })
