@@ -13,7 +13,7 @@ class FactionTest : FunSpec({
 
         faction.join(character)
 
-        faction.getMembers() shouldContain character
+        faction.getAllies() shouldContain character
     }
 
     test("Character should contain faction to which it belongs") {
@@ -32,7 +32,7 @@ class FactionTest : FunSpec({
 
         faction.leave(character)
 
-        faction.getMembers() shouldNotContain character
+        faction.getAllies() shouldNotContain character
     }
 
     test("Character after leave the faction should not belong to them") {

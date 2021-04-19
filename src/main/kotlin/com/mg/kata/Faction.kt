@@ -14,5 +14,5 @@ class Faction {
         members.remove(character)
     }
 
-    fun getMembers() = members.toList()
+    fun getAllies() = members.toList()
 }
