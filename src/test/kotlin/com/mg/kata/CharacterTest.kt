@@ -3,6 +3,7 @@ package com.mg.kata
 import com.mg.kata.AttackType.Melee
 import com.mg.kata.AttackType.Rangea
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.shouldBe
 import kotlin.test.assertEquals
 
