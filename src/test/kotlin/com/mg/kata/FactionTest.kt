@@ -2,6 +2,7 @@ package com.mg.kata
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.collections.shouldNotContain
 
 class FactionTest : FunSpec({
@@ -42,5 +43,16 @@ class FactionTest : FunSpec({
         faction.leave(character)
 
         character.getFactions().shouldNotContain(faction)
+    }
+
+    test("Character belong to more then one faction") {
+        val character = Character()
+        val faction1 = Faction()
+        val faction2 = Faction()
+
+        faction1.join(character)
+        faction2.join(character)
+
+        character.getFactions().shouldContainAll(faction1, faction2)
     }
 })
