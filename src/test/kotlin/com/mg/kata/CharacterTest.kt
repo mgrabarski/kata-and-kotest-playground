@@ -178,6 +178,18 @@ class CharacterTest : FunSpec({
 
         target.health shouldBeSameAs Health()
     }
+
+    test("Character can heal allies from faction") {
+        val healer = Character()
+        val target = Character(_health = Health(900))
+        val faction = Faction()
+        faction.join(healer)
+        faction.join(target)
+
+        healer heal target
+
+        target.health shouldBeSameAs Health(1000)
+    }
 })
 
 infix fun Health.shouldBeSameAs(health: Health) {
