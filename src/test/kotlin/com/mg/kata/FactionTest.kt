@@ -13,4 +13,13 @@ class FactionTest : FunSpec({
 
         faction.getMembers().shouldContain(character)
     }
+
+    test("Character should contain faction to which it belongs") {
+        val character = Character()
+        val faction = Faction()
+
+        faction.join(character)
+
+        character.getFactions().shouldContain(faction)
+    }
 })
