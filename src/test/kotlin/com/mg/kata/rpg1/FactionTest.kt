@@ -1,5 +1,7 @@
-package com.mg.kata
+package com.mg.kata.rpg1
 
+import com.mg.kata.rpg1.Character
+import com.mg.kata.rpg1.Faction
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainAll

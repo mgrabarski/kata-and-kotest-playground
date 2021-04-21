@@ -1,7 +1,7 @@
-package com.mg.kata
+package com.mg.kata.rpg1
 
-import com.mg.kata.AttackType.Melee
-import com.mg.kata.AttackType.Rangea
+import com.mg.kata.rpg1.AttackType.Melee
+import com.mg.kata.rpg1.AttackType.Rangea
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.shouldBe

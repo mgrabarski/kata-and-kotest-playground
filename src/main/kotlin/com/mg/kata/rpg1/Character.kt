@@ -1,6 +1,6 @@
-package com.mg.kata
+package com.mg.kata.rpg1
 
-import com.mg.kata.AttackType.Melee
+import com.mg.kata.rpg1.AttackType.Melee
 
 const val MAX_HEALTH = 1000
 

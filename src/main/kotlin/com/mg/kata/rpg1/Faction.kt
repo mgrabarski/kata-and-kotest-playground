@@ -1,4 +1,4 @@
-package com.mg.kata
+package com.mg.kata.rpg1
 
 class Faction {
 
